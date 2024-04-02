@@ -25,15 +25,11 @@ public class TC01_RegisterTest extends TC00_TestBase {
     SoftAssert softAssert = new SoftAssert();
 
 
-
     @Test
     public void validRegister() throws InterruptedException {
 
-//        String timeStamp = String.valueOf(new Date());
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm").format(new java.util.Date());
-
-        System.out.println(timeStamp);
-
+        
 
         homePage = new P001_HomePage(driver);
         homePage.goToRegisterPage();
@@ -43,9 +39,8 @@ public class TC01_RegisterTest extends TC00_TestBase {
 
         softAssert.assertTrue(registerPage.assertOnTit().getText().contains("Sign up"));
 
-        registerPage.fillingData("test"+timeStamp, "523641");
-
-        Thread.sleep(3000);
+        registerPage.fillingData("test" + timeStamp, "523641");
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
 
         driver.switchTo().alert().accept();
 
