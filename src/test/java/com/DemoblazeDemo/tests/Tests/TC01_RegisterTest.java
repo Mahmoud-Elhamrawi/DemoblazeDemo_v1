@@ -39,12 +39,10 @@ public class TC01_RegisterTest extends TC00_TestBase {
 
         softAssert.assertTrue(registerPage.assertOnTit().getText().contains("Sign up"));
 
-        registerPage.fillingData("test" + timeStamp, "523641");
+        registerPage.fillingData("test" + timeStamp, "5236416");
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
 
         driver.switchTo().alert().accept();
-
-
         softAssert.assertAll();
 
     }
